@@ -1,9 +1,22 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import "./Movieapp.css";
+import "./Movie.css";
 
-function Movie({ year, title, summary, poster, genres }){
+function Movie({ id, year, title, summary, poster, genres }){
     return (
+        <Link
+            to={{
+                pathname: `/movie/${id}`,
+                state: {
+                    year,
+                    title,
+                    summary,
+                    poster,
+                    genres
+                }
+            }}
+        >
     <div className="movie">
             <img src={poster} alt={title} title={title}></img>
         <div className="movie__data">
@@ -16,6 +29,7 @@ function Movie({ year, title, summary, poster, genres }){
             <p className="movie__summary">{summary}</p>
         </div>
     </div>
+        </Link>
     );
 }
 

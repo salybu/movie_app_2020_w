@@ -1,10 +1,9 @@
 import React from 'react';
-// import PropTypes from "prop-types";
 import axios from "axios";
-import Movie from "./components/Movie";
-import "./Movieapp.css";
+import Movie from "../components/Movie";
+import "./Home.css";
 
-class Movieapp extends React.Component {
+class Home extends React.Component {
     state = {
         isLoading: true,
         movies: []
@@ -15,13 +14,9 @@ class Movieapp extends React.Component {
                 data: { movies } 
             } 
         } = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
-        // console.log(movies)
         this.setState({ movies, isLoading: false });
     }
     componentDidMount(){
-        // setTimeout(() => {
-        //     this.setState({ isLoading : false })
-        // }, 6000)
         this.getMovies();
     }
     render(){
@@ -50,4 +45,4 @@ class Movieapp extends React.Component {
     }
 }
 
-export default Movieapp;
+export default Home;
